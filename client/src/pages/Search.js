@@ -3,6 +3,8 @@ import Jumbotron from "../components/Jumbotron/Header";
 import SearchForm from "../components/Form/SearchForm";
 import GoogleAPI from "../utils/GoogleAPI";
 import { Col, Row, Container } from "../components/Grid";
+import Card from "../components/Card";
+import { List, ListItem } from "../components/List";
 
 
 // const BASEURL = "https://www.googleapis.com/books/v1/volumes?q=";
@@ -59,8 +61,21 @@ class Search extends Component {
         </Jumbotron>
         <Row>
           <Container fluid>
-            <Col size="md-3">
-            </Col>
+            {this.state.result.length ? (
+              <List>
+                {this.state.result.map(book => (
+                  <ListItem key={book.id}>
+                    <Card 
+                      title={book.volumeInfo.title}
+                      author={book.volumeInfo.authors}
+                      description={book.volumeInfo.description}
+                      image={book.volumeInfo.imageLinks.smallThumbnail}
+                      link={book.volumeInfo.infoLink}
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            ) : (<h3>No Results to Display</h3>)}
           </Container>
         </Row>
       </div>
