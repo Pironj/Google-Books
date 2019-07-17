@@ -5,6 +5,8 @@ import GoogleAPI from "../utils/GoogleAPI";
 import { Col, Row, Container } from "../components/Grid";
 import Card from "../components/Card";
 import { List, ListItem } from "../components/List";
+import API from "../utils/API";
+import {SaveBtn} from "../components/Button/SaveBtn";
 
 
 // const BASEURL = "https://www.googleapis.com/books/v1/volumes?q=";
@@ -13,7 +15,7 @@ import { List, ListItem } from "../components/List";
 class Search extends Component {
   state = {
     result: [],
-    search: ""
+    search: "",
   };
 
   // Search function that uses our Google query string and 
@@ -43,6 +45,19 @@ class Search extends Component {
     console.log(this.state.search);
   };
 
+  handleSaved = saved => {
+    console.log("Hit saved");
+    saved.preventDefault();
+      API.saveBook(saved)
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    
+  };
+
 
 
   render() {
@@ -66,12 +81,15 @@ class Search extends Component {
                 {this.state.result.map(book => (
                   <ListItem key={book.id}>
                     <Card 
+                      _id= {book.id}
                       title={book.volumeInfo.title}
                       author={book.volumeInfo.authors}
                       description={book.volumeInfo.description}
                       image={book.volumeInfo.imageLinks.smallThumbnail}
                       link={book.volumeInfo.infoLink}
-                    />
+                      handleSaved={this.handleSaved}
+                      >
+                    </Card>
                   </ListItem>
                 ))}
               </List>

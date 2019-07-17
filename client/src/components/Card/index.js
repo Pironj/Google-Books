@@ -1,5 +1,6 @@
 import React from "react";
 import {Row} from "../Grid";
+// import {SaveBtn} from "../Button/SaveBtn";
 
 function Card(props) {
   return (
@@ -11,12 +12,12 @@ function Card(props) {
         <div className="col-md-10">
           <div className="card-body">
             <Row>
-              <a href="#" className="btn btn-primary">Save</a>
               <a href={props.link} className="btn btn-primary">View</a>
+              <a onClick={props.handleSaved} href="/api/books" className="btn btn-success">Save</a>
             </Row>
             <h5 className="card-title">{props.title}</h5>
             <p className="card-text">{props.description}</p>
-            <p className="card-text"><small className="text-muted">{props.author}</small></p>
+            <p className="card-text"><small className="text-muted">by: {props.author}</small></p>
           </div>
         </div>
       </div>
