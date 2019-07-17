@@ -1,9 +1,6 @@
 ## React Google Books Search
 This app is currently under development.  Users will be able to type in a book title and the app makes a call to Google Books API and displays the books from google that match the search.  The data is rendered via components from React with options to view the book and purchase or to save the book to come back to later
 
-# Issues
-- Linking the save functionality and fixing a bug in the post route to database
-- updating saved page display with delete option from aved book titles
 
 # Technologies
 
@@ -15,7 +12,11 @@ This app is currently under development.  Users will be able to type in a book t
 - Google Books API
 - Axios
 
-
+## ScreenShot of App
+  # Main Page/Search function
+![Main Page](images/home.PNG)
+  # Linking to view book
+![book detail/purchase page](images/view.PNG)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -85,3 +86,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+# Future Development
+- Linking the save functionality and fixing a bug in the post route to database
+- updating saved page display with delete option from aved book titles
